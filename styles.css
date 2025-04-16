@@ -1,35 +1,170 @@
-/* styles.css */
-:root {
-    --bg-color: white;
-    --text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #1a1a1a;
-        --text-color: white;
-    }
-}
-
-.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: white;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background 0.3s, color 0.3s;
-    font-family: Arial, sans-serif;
+/* Reset and base */
+* {
     margin: 0;
-    padding: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    background: #007bff;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 10%;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00fff0;
+    text-shadow: 0 0 8px #00fff0;
+    animation: floatLogo 3s ease-in-out infinite;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+  }
+  
+  nav a::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #00fff0;
+    transition: 0.4s ease;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+  }
+  
+  nav a:hover {
+    color: #00fff0;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    animation: fadeIn 1.2s ease;
+    letter-spacing: 1.5px;
+    color: lightskyblue;
+  }
+  
+  .hero p {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: lightskyblue;
+    max-width: 600px;
+  }
+  
+  .hero li a {
+    color: #00fff0;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: color 0.3s;
+  }
+  
+  .hero li a:hover {
+    color: #00c9b7;
+  }
+  
+  /* Call-to-Action Button */
+  .cta-button {
+    background: rgba(0, 255, 240, 0.2);
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    padding: 14px 34px;
+    border-radius: 35px;
+    text-decoration: none;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    border: 1px solid #00fff0;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 240, 0.4);
+  }
+  
+  .cta-button:hover {
+    background: #00fff0;
+    color: #000;
+    transform: scale(1.07);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+  
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero p {
+      font-size: 1.1rem;
+    }
+  
+    .cta-button {
+      padding: 12px 26px;
+    }
+  }
