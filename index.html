@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dark Mode Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classblitz</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">WELCOME</div>
+      <img class="logo" src="assets/images/logo-Dark-mode.png" alt="Welcome Logo">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
@@ -18,11 +18,37 @@
       </ul>
     </nav>
     <div class="hero">
-      <h1>Welcome to P5 CS</h1>
-      <li><a href="LINK" target="_blank">Name</a></li>
-      <li><a href="https://yrdsb-peths.github.io/github-pages-SaifulShaik/" target="_blank">Saiful</a></li>
+      <div class="floating-ball"></div>
+      <h1>Welcome to Classblitz</h1>
+      <h1>P5 CS</h1>
       <a href="#" class="cta-button">Get Started</a>
     </div>
   </header>
+
+  <main>
+    <section class="card-section">
+      <h2>Profile Cards</h2>
+      <div class="card-container" id="cardContainer"></div>
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <button id="addCardBtn" class="cta-button">Add Profile</button>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="cardModal">
+      <div class="modal">
+        <h2 id="modalTitle">Add Profile</h2>
+        <label for="profileTitle">Profile Title:</label>
+        <input type="text" id="profileTitle" placeholder="Enter title" />
+        <label for="profileDescription">Description:</label>
+        <textarea id="profileDescription" placeholder="Enter description"></textarea>
+        <button id="saveProfileBtn">Save Profile</button>
+        <button class="close-modal" id="closeModalBtn">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Link to external JS file -->
+  <script src="script.js"></script>
 </body>
 </html>

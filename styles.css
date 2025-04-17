@@ -1,170 +1,467 @@
-/* Reset and base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #ddd;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+/* Main Wrapper for Centering Content */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Header Styling */
+h1, h2 {
+  font-weight: 700;
+  color: #f4f4f4;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Navigation Bar Styling */
+nav {
+  background-color: #1a1a1a;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+nav .logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 1.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff7b00; /* Vibrant orange for hover */
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff7b00;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hero Section */
+.hero {
+  background: black;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* Space elements evenly within the hero section */
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0;
+}
+
+.cta-button {
+  background-color: #ff7b00; /* Vibrant orange */
+  color: white;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  border-radius: 50px; /* Rounded edges */
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  box-shadow: 0 8px 15px rgba(255, 123, 0, 0.4); /* Subtle shadow for depth */
+}
+
+.cta-button:hover {
+  background-color: #e66900; /* Slightly darker orange */
+  transform: translateY(-5px); /* Lift the button on hover */
+  box-shadow: 0 15px 30px rgba(255, 123, 0, 0.6); /* Stronger shadow on hover */
+}
+
+.cta-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.7); /* Focus state with glow effect */
+}
+
+.cta-button:active {
+  transform: translateY(2px); /* Slight depression effect when clicked */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reset shadow when clicked */
+}
+
+/* ================================
+   Card Section
+================================= */
+.card-section {
+  padding: 4rem 2rem;
+  background-color: #1a1a1a;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 220px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.9) 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 123, 0, 0.7);
+  outline: 4px solid #ff7b00;
+}
+
+.card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card h3,
+.card p {
+  margin: 0.8rem 0;
+  color: #f4f4f4;
+}
+
+.card h3[contenteditable],
+.card p[contenteditable] {
+  outline: none;
+  border: 2px solid #444;
+  background-color: #222;
+  padding: 0.6rem;
+  border-radius: 6px;
+  color: #ddd;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.card h3[contenteditable]:focus,
+.card p[contenteditable]:focus {
+  background-color: #333;
+  border: 2px solid #ff7b00;
+}
+
+.editable {
+  overflow: hidden;
+  max-height: 240px;
+  position: relative;
+  cursor: pointer;
+}
+
+.editable::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(to top, #1a1a1a, transparent);
+  pointer-events: none;
+}
+
+.card.expanded .editable {
+  max-height: none;
+  overflow: auto;
+}
+
+.card.expanded .editable::after {
+  display: none;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+button {
+  background-color: #ff7b00;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #e66900;
+  transform: translateY(-3px);
+}
+
+button:focus {
+  outline: none;
+}
+
+.show-more {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #ff7b00;
+  font-weight: bold;
+  background-color: transparent;
+  border: 2px solid #ff7b00;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.show-more:hover {
+  background-color: #ff7b00;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}
+
+/* ================================
+   Enlarged Card Modal Effect
+================================= */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95); /* Dark background */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* When modal is active */
+.modal-overlay.active {
+  display: flex;
+}
+
+.card.expanded {
+  width: 600px;
+  max-width: 90%;
+  height: 500px;
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(255, 123, 0, 0.6);
+  position: fixed; /* Changed from relative to fixed */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset the card by 50% of its width and height */
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================================
+   Close Button for Expanded Card
+================================= */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 10001;
+  transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+  background-color: #cc0000;
+}
+
+
+
+/* Footer Section */
+footer {
+  background-color: #1a1a1a;
+  padding: 2rem 0;
+  text-align: center;
+  color: #fff;
+  border-top: 2px solid #444;
+  transition: background-color 0.3s ease;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+/* Floating Shadow Ball in Hero Section */
+.floating-ball {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.8) 0%,     /* Brighter orange center */
+    rgba(255, 100, 0, 0.5) 40%,    /* Warm orange transition */
+    rgba(0, 0, 0, 0.3) 80%,        /* Faded black transition */
+    rgba(0, 0, 0, 0) 100%          /* Fully transparent edge */
+  );
+  border-radius: 50%;
+  animation: floatBall 16s infinite ease-in-out;
+  pointer-events: none;
+  top: 25%;
+  left: 35%;
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+@keyframes floatBall {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.4;
   }
-  
-  html {
-    scroll-behavior: smooth;
+  10% {
+    transform: translate(180px, -150px) scale(1.05);
+    opacity: 0.6;
   }
-  
-  body {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #f0f0f0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  20% {
+    transform: translate(-250px, 50px) scale(1.1);
+    opacity: 0.7;
   }
-  
-  /* Navbar */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 10%;
-    background: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  30% {
+    transform: translate(320px, 80px) scale(1.12);
+    opacity: 0.5;
   }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #00fff0;
-    text-shadow: 0 0 8px #00fff0;
-    animation: floatLogo 3s ease-in-out infinite;
-    letter-spacing: 1px;
+  40% {
+    transform: translate(-300px, -200px) scale(1.08);
+    opacity: 0.6;
   }
-  
-  @keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+  50% {
+    transform: translate(250px, 150px) scale(1.1);
+    opacity: 0.7;
   }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 28px;
+  60% {
+    transform: translate(-100px, -120px) scale(1.05);
+    opacity: 0.6;
   }
-  
-  nav a {
-    color: #eee;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
+  70% {
+    transform: translate(200px, -200px) scale(1.1);
+    opacity: 0.7;
   }
-  
-  nav a::after {
-    content: "";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background: #00fff0;
-    transition: 0.4s ease;
-    position: absolute;
-    bottom: -4px;
-    left: 0;
+  80% {
+    transform: translate(-150px, 100px) scale(1.1);
+    opacity: 0.6;
   }
-  
-  nav a:hover {
-    color: #00fff0;
+  90% {
+    transform: translate(250px, 50px) scale(1.08);
+    opacity: 0.5;
   }
-  
-  nav a:hover::after {
-    width: 100%;
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.4;
   }
-  
-  /* Hero Section */
-  .hero {
-    text-align: center;
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr;
   }
-  
+
   .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    animation: fadeIn 1.2s ease;
-    letter-spacing: 1.5px;
-    color: lightskyblue;
+    font-size: 3rem;
   }
-  
-  .hero p {
-    font-size: 1.4rem;
-    margin-bottom: 25px;
-    color: lightskyblue;
-    max-width: 600px;
-  }
-  
-  .hero li a {
-    color: #00fff0;
-    font-weight: bold;
-    text-decoration: none;
-    margin-bottom: 20px;
-    display: inline-block;
-    transition: color 0.3s;
-  }
-  
-  .hero li a:hover {
-    color: #00c9b7;
-  }
-  
-  /* Call-to-Action Button */
+
   .cta-button {
-    background: rgba(0, 255, 240, 0.2);
-    color: white;
-    padding: 14px 34px;
-    border-radius: 35px;
-    text-decoration: none;
-    font-weight: bold;
-    backdrop-filter: blur(5px);
-    border: 1px solid #00fff0;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 240, 0.4);
+    padding: 0.8rem 1.2rem;
   }
-  
-  .cta-button:hover {
-    background: #00fff0;
-    color: #000;
-    transform: scale(1.07);
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.5rem;
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .cta-button {
+    padding: 0.8rem 1.2rem;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    nav ul {
-      flex-direction: column;
-      gap: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 12px;
-      margin-top: 12px;
-    }
-  
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-  
-    .hero p {
-      font-size: 1.1rem;
-    }
-  
-    .cta-button {
-      padding: 12px 26px;
-    }
+
+  .card-container {
+    grid-template-columns: 1fr;
   }
+}
